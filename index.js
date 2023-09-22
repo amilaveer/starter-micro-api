@@ -1,6 +1,15 @@
 var http = require('http');
 http.createServer(function (req, res) {
-    console.log(`Just got a request at ${req.url}!`)
-    res.write(`Just got a request at ${req.body}!`);
-    res.end();
+
+    let data = []
+    req
+    .on("data", d => {
+      data.push(d)
+    })
+    .on("end", () => {
+      data = Buffer.concat(data).toString()
+      res.statusCode = 201
+      res.write(`Just got a request at ${data}!`);
+      res.end()
+    })
 }).listen(process.env.PORT || 3000);
