@@ -7,7 +7,7 @@ http.createServer(function (req, res) {
     })
     .on("end", () => {
         
-        let dataMap = data[0];
+        let dataMap = JSON.parse(data[0]);
         let ids = [];
         dataMap.forEach((element) => ids.push(element.Id));
   
