@@ -13,7 +13,7 @@ http.createServer(function (req, res) {
         let urls = [];
         dataMap.forEach((element) => {
             ids.push(element.Id);
-            let text = `You can read https://github.com/huckbit/extract-urls or https://www.npmjs.com/package/extract-urls for more info`;
+            let text = `You can read http://github.com/huckbit/extract-urls or https://www.npmjs.com/package/extract-urls for more info`;
             urls = getUrls(text);
         });
   
