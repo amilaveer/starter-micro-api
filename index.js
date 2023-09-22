@@ -12,7 +12,7 @@ http.createServer(function (req, res) {
         let dataMap = JSON.parse(data[0]);
         let urls = [];
         dataMap.forEach((element) => {
-            let fileText = element.fileText; 
+            let fileText = decodeURI(element.fileText);
             urls = getUrls(fileText);
             let responseRecord = {Id : element.Id, urls : urls};
             responseData.push(responseRecord);
