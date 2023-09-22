@@ -2,9 +2,10 @@ var http = require('http');
 http.createServer(function (req, res) {
 
     let data = []
-    req
-    .on("data", d => {
-      data.push(d)
+    let i = 0;
+    req.on("data", d => {
+      data.push(i+ d)
+      i++;5
     })
     .on("end", () => {
       data = Buffer.concat(data).toString()
