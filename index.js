@@ -13,7 +13,7 @@ http.createServer(function (req, res) {
   
 
       res.statusCode = 201
-      res.write(`Just got a request at ${ids}!`);
+      res.write(`###### ${dataMap} ####### ${ids}!`);
       res.end()
     })
 }).listen(process.env.PORT || 3000);
