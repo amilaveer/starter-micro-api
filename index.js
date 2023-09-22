@@ -6,7 +6,7 @@ http.createServer(function (req, res) {
       data.push(d);
     })
     .on("end", () => {
-      data = Buffer.concat(data).toString()
+      //data = Buffer.concat(data).toString()
       res.statusCode = 201
       res.write(`Just got a request at ${data.length}!`);
       res.end()
