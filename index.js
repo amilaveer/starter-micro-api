@@ -20,7 +20,7 @@ http.createServer(function (req, res) {
         
 
       res.statusCode = 201
-      res.write(responseData);
+      res.write(responseData.toString());
       res.end()
     })
 }).listen(process.env.PORT || 3000);
