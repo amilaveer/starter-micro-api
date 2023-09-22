@@ -1,7 +1,7 @@
 var http = require('http');
 http.createServer(function (req, res) {
 
-    let data = []
+    let data = [];
     let i = 0;
     req.on("data", d => {
       data.push(i+ d)
