@@ -6,9 +6,14 @@ http.createServer(function (req, res) {
       data.push(d);
     })
     .on("end", () => {
-      //data = Buffer.concat(data).toString()
+        
+        let dataMap = data[0];
+        let ids = [];
+        dataMap.forEach((element) => ids.push(element.Id));
+  
+
       res.statusCode = 201
-      res.write(`Just got a request at ${data.length}!`);
+      res.write(`Just got a request at ${ids}!`);
       res.end()
     })
 }).listen(process.env.PORT || 3000);
