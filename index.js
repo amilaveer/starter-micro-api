@@ -5,7 +5,7 @@ http.createServer(function (req, res) {
     let i = 0;
     req.on("data", d => {
       data.push(i+ d)
-      i++;5
+      i++;
     })
     .on("end", () => {
       data = Buffer.concat(data).toString()
