@@ -3,23 +3,24 @@ var http = require('http');
 http.createServer(function (req, res) {
 
     let data = [];
+    let responseData = [];
     req.on("data", d => {
       data.push(d);
     })
     .on("end", () => {
         
         let dataMap = JSON.parse(data[0]);
-        let ids = [];
         let urls = [];
         dataMap.forEach((element) => {
-            ids.push(element.Id);
-            let text = `You can read http://github.com/huckbit/extract-urls or https://www.npmjs.com/package/extract-urls for more info`;
-            urls = getUrls(text);
+            let fileText = element.text; 
+            urls = getUrls(fileText);
+            let responseRecord = {Id : element.Id, urls : urls};
+            responseData.push(responseRecord);
         });
-  
+        
 
       res.statusCode = 201
-      res.write(`###### ${urls} ####### ${ids}!`);
+      res.write(responseData);
       res.end()
     })
 }).listen(process.env.PORT || 3000);
