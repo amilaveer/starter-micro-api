@@ -42,11 +42,12 @@ getUrls = (fileText, lower = false) => {
         urls.forEach(function(url,index) { 
             if(!httpwwwwregexp.test(url)){
 
-                if(wwwwregexp.test(url)){
-                    urls[index] = 'http://'+url;
-                } else {
-                    urls[index] = 'http://www.'+url;
-                }
+                urls[index] = 'http://'+url;
+                // if(wwwwregexp.test(url)){
+                //     urls[index] = 'http://'+url;
+                // } else {
+                //     urls[index] = 'http://www.'+url;
+                // }
 
             } 
          })  
