@@ -46,7 +46,7 @@ getUrls = (fileText, lower = false) => {
             if(!httpwwwwregexp.test(url)){
 
                 //normalizedUrls.push('http://'+url);
-                let normalizedUrl = url;
+                let normalizedUrl;
                 if(wwwwregexp.test(url)){
                     normalizedUrl = 'http://'+url;
                 } else {
@@ -66,7 +66,7 @@ getUrls = (fileText, lower = false) => {
 
                 }
 
-                normalizedUrls.push(normalizedUrl);
+                if(normalizedUrl)normalizedUrls.push(normalizedUrl);
 
             } else{
                 normalizedUrls.push(url);
