@@ -39,19 +39,32 @@ getUrls = (fileText, lower = false) => {
   
     if (fileText) {
       let urls = fileText.match(regexp);
+      let normalizedUrls = [];
       if (urls) {
 
         urls.forEach(function(url,index) { 
             if(!httpwwwwregexp.test(url)){
 
-                urls[index] = 'http://'+url;
-                // if(wwwwregexp.test(url)){
-                //     urls[index] = 'http://'+url;
-                // } else {
-                //     urls[index] = 'http://www.'+url;
-                // }
+                //normalizedUrls.push('http://'+url);
+                let normalizedUrl = url;
+                if(wwwwregexp.test(url)){
+                    normalizedUrl = 'http://'+url;
+                } else {
 
-            } 
+                    let domain = url.split('/')[0];
+                    urlParts = domain.split('.');
+                    if(urlParts.size()==0){
+                        if(urlParts[1]=='com' || urlParts[1]=='net' || urlParts[1]=='io'){
+                            normalizedUrl = 'http://'+url;
+                        }
+                    }
+                    normalizedUrls.push(normalizedUrl);
+
+                }
+
+            } else{
+                normalizedUrls.push(url);
+            }
          })  
 
         return lower ? urls.map((item) => item.toLowerCase().replace(bracketsRegexp, "")) : urls.map((item) => item.replace(bracketsRegexp, ""));
