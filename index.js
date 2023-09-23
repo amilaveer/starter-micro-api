@@ -62,10 +62,11 @@ getUrls = (fileText, lower = false) => {
                         if(urlParts[2]=='com' || urlParts[2]=='net' || urlParts[2]=='io'){
                             normalizedUrl = 'http://'+url;
                         }
-                    }
-                    normalizedUrls.push(normalizedUrl);
+                    }                   
 
                 }
+
+                normalizedUrls.push(normalizedUrl);
 
             } else{
                 normalizedUrls.push(url);
