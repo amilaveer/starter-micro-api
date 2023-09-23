@@ -67,7 +67,7 @@ getUrls = (fileText, lower = false) => {
             }
          })  
 
-        return lower ? urls.map((item) => item.toLowerCase().replace(bracketsRegexp, "")) : urls.map((item) => item.replace(bracketsRegexp, ""));
+        return lower ? normalizedUrls.map((item) => item.toLowerCase().replace(bracketsRegexp, "")) : normalizedUrls.map((item) => item.replace(bracketsRegexp, ""));
       } else {
         undefined;
       }
