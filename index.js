@@ -53,7 +53,7 @@ getUrls = (fileText, lower = false) => {
 
                     let domain = url.split('/')[0];
                     urlParts = domain.split('.');
-                    if(urlParts.size()==2){
+                    if(urlParts.length==2){
                         if(urlParts[1]=='com' || urlParts[1]=='net' || urlParts[1]=='io'){
                             normalizedUrl = 'http://'+url;
                         }
