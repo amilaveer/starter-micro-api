@@ -28,10 +28,29 @@ http.createServer(function (req, res) {
 getUrls = (fileText, lower = false) => {
     const regexp = /(https?:\/\/)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()'@:%_\+.~#?!&//=]*)/gi;
     const bracketsRegexp = /[()]/g;
+
+    const httpwwwString = '^https?:\/\/(www\.)';
+    const httpwwwwregexp = new RegExp(httpwwwString);
+
+    const wwwString = '^www\.';
+    const wwwwregexp = new RegExp(wwwString);
   
     if (fileText) {
       let urls = fileText.match(regexp);
       if (urls) {
+
+        urls.forEach(function(url,index) { 
+            if(!httpwwwwregexp.test(url)){
+
+                if(wwwwregexp.test(url)){
+                    urls[index] = 'http://'+url;
+                } else {
+                    urls[index] = 'http://www.'+url;
+                }
+
+            } 
+         })  
+
         return lower ? urls.map((item) => item.toLowerCase().replace(bracketsRegexp, "")) : urls.map((item) => item.replace(bracketsRegexp, ""));
       } else {
         undefined;
